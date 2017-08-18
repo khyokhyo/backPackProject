@@ -15,14 +15,15 @@ class Suggestions extends React.Component {
     this.addToCart = this.addToCart.bind(this);
   }
 
-  addToCart(event) {
-    event.preventDefault();
-    
+  addToCart(key) {
     const cart = {...this.state.cart};
+    const product = {...this.state.product};
     cart[1] = cart[1] + 1 || 1;
+    product[1] = key;
     this.setState({ cart });
+    this.setState({ product });
 
-    alert('added to cart ' + cart[1]);
+    alert('added to cart ' + cart[1]) + product[1];
   }
 
   render() {
@@ -39,7 +40,7 @@ class Suggestions extends React.Component {
         <li className="menu-fish">
           <h6 className="fish-name">Samsung</h6>
           <p>This is a smart phone. It is a product of J series. The code is Samsung Galaxy J5.</p>
-          <button onClick={this.addToCart}>Add to cart</button>
+          <button onClick={() => this.addToCart('key')}>Add to cart</button>
         </li>
       </header>
       </div>
