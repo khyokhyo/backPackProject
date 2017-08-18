@@ -18,12 +18,12 @@ class Suggestions extends React.Component {
   addToCart(key) {
     const cart = {...this.state.cart};
     const product = {...this.state.product};
-    cart[1] = cart[1] + 1 || 1;
-    product[1] = key;
+    cart[key] = cart[key] + 1 || 1;
+    product[key] = key;
     this.setState({ cart });
     this.setState({ product });
 
-    alert('added to cart ' + cart[1]) + product[1];
+    alert('added to cart ' + cart[key] + ' ' + product[key]);
   }
 
   render() {
@@ -35,17 +35,17 @@ class Suggestions extends React.Component {
         <li className="menu-fish">
           <h6 className="fish-name">Phone</h6>
           <p>This is a smart phone. The company is Samsung. It is a product of J series. The code is Samsung Galaxy J7.</p>
-          <button>Add to cart</button>
+          <button onClick={() => this.addToCart('phone')}>Add to cart</button>
         </li>
         <li className="menu-fish">
           <h6 className="fish-name">Samsung</h6>
           <p>This is a smart phone. It is a product of J series. The code is Samsung Galaxy J5.</p>
-          <button onClick={() => this.addToCart('key')}>Add to cart</button>
+          <button onClick={() => this.addToCart('samsung')}>Add to cart</button>
         </li>
       </header>
       </div>
       <div classname="menu">
-        <Cart cart={this.state.cart} />
+        <Cart product={this.state.product} cart={this.state.cart} />
       </div>
       </div>
     );
