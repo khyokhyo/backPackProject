@@ -2,34 +2,54 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import '../css/style.css';
 import Suggestions from './Suggestions';
+import Client from "./Client";
+
+const MATCHING_ITEM_LIMIT = 5;
 
 class SearchProduct extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      value: '',
+      showRemoveIcon: false,
+      products: []
+    };
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
+  handleSearchChange = e => {
+    const value = e.target.value;
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
+    this.setState({
+      value: value
+    });
+
+    if (value === "") {
+      this.setState({
+        products: [],
+        showRemoveIcon: false
+      });
+    } else {
+      this.setState({
+        showRemoveIcon: true
+      });
+
+      Client.search(value, products => {
+        this.setState({
+          products: products.hits.hits.slice(0, MATCHING_ITEM_LIMIT)
+        });
+      });
+    }
+  };
 
   render() {
+
     return (
       <div>
-        <form className="product-selector" onSubmit={this.handleSubmit}>
-          <h5>Enter a product name</h5>
-          <input type="text" required value={this.state.value} onChange={this.handleChange} />
-          <button type="submit">Search</button>
-        </form>
-        <Suggestions />
+        <div className="product-selector">
+          <input type="text" placeholder="Please enter a product name" value={this.state.value}
+            onChange={this.handleSearchChange} />
+        </div>
+        <Suggestions products={this.state.products}/>
       </div>
     );
   }

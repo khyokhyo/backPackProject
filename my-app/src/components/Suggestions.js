@@ -13,6 +13,7 @@ class Suggestions extends React.Component {
     };
 
     this.addToCart = this.addToCart.bind(this);
+    this.clearCart = this.clearCart.bind(this);
   }
 
   addToCart(key) {
@@ -22,30 +23,36 @@ class Suggestions extends React.Component {
     product[key] = key;
     this.setState({ cart });
     this.setState({ product });
+  }
 
-    alert('added to cart ' + cart[key] + ' ' + product[key]);
+  clearCart(event) {
+    const cart = {...this.state.cart};
+    const product = {...this.state.product};
+
+    this.setState({
+      product: [],
+      cart: []
+    });
   }
 
   render() {
+    const productRows = this.props.products.map((product, idx) => (
+      <li className="menu-fish" key={idx}>
+        <h6 className="fish-name">{product._source.title}</h6>
+        <button onClick={() => this.addToCart(product._source.title)}>Add to cart</button>
+      </li>
+    ));
+
     return (
       <div className="catch-of-the-day">
-      <div classname="menu">
+      <div className="menu">
       <header className="top">
         <h2><span>Suggestions</span></h2>
-        <li className="menu-fish">
-          <h6 className="fish-name">Phone</h6>
-          <p>This is a smart phone. The company is Samsung. It is a product of J series. The code is Samsung Galaxy J7.</p>
-          <button onClick={() => this.addToCart('phone')}>Add to cart</button>
-        </li>
-        <li className="menu-fish">
-          <h6 className="fish-name">Samsung</h6>
-          <p>This is a smart phone. It is a product of J series. The code is Samsung Galaxy J5.</p>
-          <button onClick={() => this.addToCart('samsung')}>Add to cart</button>
-        </li>
+          {productRows}
       </header>
       </div>
-      <div classname="menu">
-        <Cart product={this.state.product} cart={this.state.cart} />
+      <div className="menu">
+        <Cart clearCart={this.clearCart} product={this.state.product} cart={this.state.cart} />
       </div>
       </div>
     );

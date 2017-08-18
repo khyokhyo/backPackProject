@@ -32,6 +32,7 @@ class Cart extends React.Component {
     return (
       <div className="order-wrap">
         <h2>Cart</h2>
+      	<button onClick={() => this.props.clearCart()}>Clear cart</button>
         <ul className="order">
         	{cartIds.map(this.renderCart)}
         	<li className="total">
