@@ -37,7 +37,7 @@ class Suggestions extends React.Component {
 
   render() {
     const productRows = this.props.products.map((product, idx) => (
-      <li key={idx}>
+      <li style={{width: 300, height: 450}} key={idx}>
         <img src={product._source.images[0]} style={{width: 250, height: 250}} alt={product._source.title} />
         <h6 >{product._source.title}</h6>
         <p >${product._source.price}</p>

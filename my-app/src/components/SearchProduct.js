@@ -4,7 +4,7 @@ import '../css/style.css';
 import Suggestions from './Suggestions';
 import Client from "./Client";
 
-const MATCHING_ITEM_LIMIT = 5;
+const MATCHING_ITEM_LIMIT = 9;
 
 class SearchProduct extends React.Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class SearchProduct extends React.Component {
 
     return (
       <div>
-      
+
         <div className="product-selector">
           <input type="text" placeholder="Please enter a product name" value={this.state.value}
             onChange={this.handleSearchChange} />
