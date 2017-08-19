@@ -37,10 +37,10 @@ class Suggestions extends React.Component {
 
   render() {
     const productRows = this.props.products.map((product, idx) => (
-      <li className="menu-fish" key={idx}>
+      <li key={idx}>
         <img src={product._source.images[0]} alt={product._source.title} />
-        <h6 className="fish-name">{product._source.title}</h6>
-        <p className="price">${product._source.price}</p>
+        <h6 >{product._source.title}</h6>
+        <p >${product._source.price}</p>
         <button key={idx} onClick={() => this.addToCart(product, product._source.title)}>Add to cart</button>
       </li>
     ));

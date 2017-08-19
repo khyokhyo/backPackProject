@@ -648,3 +648,35 @@ input[type=submit].twitter:after {
 .product-selector button[type="text"] {
   font-size: 3rem;
 }
+.product-suggestion {
+  background: #fff;
+  max-width: 800px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 2rem;
+  border: 2px solid #000;
+}
+.product-suggestion input,
+.product-suggestion button {
+  width: 100%;
+}
+.product-suggestion input[type="text"],
+.product-suggestion button[type="text"] {
+  font-size: 3rem;
+}
+.product-cart {
+  background: #fff;
+  max-width: 400px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 2rem;
+  border: 2px solid #000;
+}
+.product-cart input,
+.product-cart button {
+  width: 100%;
+}
+.product-cart input[type="text"],
+.product-cart button[type="text"] {
+  font-size: 3rem;
+}
