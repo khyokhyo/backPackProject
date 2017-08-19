@@ -34,7 +34,7 @@ class Cart extends React.Component {
       <div className="order-wrap">
         <h2>Cart</h2>
         <button disabled={true} onClick={() => this.props.clearCart()}>Clear cart</button>
-        <h6><span>Cart Is Empty</span></h6>
+        <h6><span>Your Cart Is Empty</span></h6>
       </div>
     );
 
@@ -42,13 +42,13 @@ class Cart extends React.Component {
       <div className="order-wrap">
         <h2>Cart</h2>
       	<button onClick={() => this.props.clearCart()}>Clear cart</button>
-        <ul className="order">
+        <ol className="order">
         	{cartIds.map(this.renderCart)}
         	<li className="total">
         		<strong>Total:</strong>
         		${total}
         	</li>
-        </ul>
+        </ol>
       </div>
     );
   }

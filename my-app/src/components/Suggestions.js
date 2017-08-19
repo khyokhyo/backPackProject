@@ -38,7 +38,7 @@ class Suggestions extends React.Component {
   render() {
     const productRows = this.props.products.map((product, idx) => (
       <li key={idx}>
-        <img src={product._source.images[0]} alt={product._source.title} />
+        <img src={product._source.images[0]} style={{width: 250, height: 250}} alt={product._source.title} />
         <h6 >{product._source.title}</h6>
         <p >${product._source.price}</p>
         <button key={idx} onClick={() => this.addToCart(product, product._source.title)}>Add to cart</button>
@@ -51,8 +51,8 @@ class Suggestions extends React.Component {
         <div className="menu">
           <header className="top">
             <h2><span>Suggestions</span></h2>
-            <h3><span>Nothing To Show</span></h3>
           </header>
+            <h3><span>Nothing To Show</span></h3>
         </div>
         <div className="menu">
           <Cart clearCart={this.clearCart} product={this.state.product} cart={this.state.cart} />
@@ -63,12 +63,10 @@ class Suggestions extends React.Component {
     return (
       <div className="catch-of-the-day">
       <div className="menu">
-      <header className="top">
         <h2><span>Suggestions</span></h2>
         <ul>
           {productRows}
         </ul>
-      </header>
       </div>
       <div className="menu">
         <Cart clearCart={this.clearCart} product={this.state.product} cart={this.state.cart} />
