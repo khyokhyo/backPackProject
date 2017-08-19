@@ -350,6 +350,7 @@ header.top h3:after {
           transform: translateX(50%) rotateY(6deg) translateX(-50%);
   min-width: 500px;
   max-width: 1000px;
+  height: 90vh;
 }
 .catch-of-the-day > *:nth-child(2) {
   -ms-flex-negative: 1;
@@ -359,10 +360,10 @@ header.top h3:after {
   -webkit-transform: translateX(50%) rotateY(6deg) translateX(-50%);
           transform: translateX(50%) rotateY(6deg) translateX(-50%);
   
-  margin-top: 20px;
+  margin-top: 22px;
   min-width: 200px;
   max-width: 305px;
-  max-height: 555px;
+  height: 83vh;
 }
 .catch-of-the-day > *:last-child {
   -ms-flex-negative: 1;
