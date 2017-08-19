@@ -8,19 +8,19 @@ class Suggestions extends React.Component {
   constructor() {
     super();
     this.state = {
-      product: {},
-      cart: {}
+      product: [],
+      cart: []
     };
 
     this.addToCart = this.addToCart.bind(this);
     this.clearCart = this.clearCart.bind(this);
   }
 
-  addToCart(key) {
+  addToCart(item, key) {
     const cart = {...this.state.cart};
     const product = {...this.state.product};
     cart[key] = cart[key] + 1 || 1;
-    product[key] = key;
+    product[key] = item;
     this.setState({ cart });
     this.setState({ product });
   }
@@ -38,17 +38,36 @@ class Suggestions extends React.Component {
   render() {
     const productRows = this.props.products.map((product, idx) => (
       <li className="menu-fish" key={idx}>
+        <img src={product._source.images[0]} alt={product._source.title} />
         <h6 className="fish-name">{product._source.title}</h6>
-        <button onClick={() => this.addToCart(product._source.title)}>Add to cart</button>
+        <p className="price">${product._source.price}</p>
+        <button key={idx} onClick={() => this.addToCart(product, product._source.title)}>Add to cart</button>
       </li>
     ));
+
+    if (this.props.products == 0) 
+    return (
+      <div className="catch-of-the-day">
+        <div className="menu">
+          <header className="top">
+            <h2><span>Suggestions</span></h2>
+            <h3><span>Nothing To Show</span></h3>
+          </header>
+        </div>
+        <div className="menu">
+          <Cart clearCart={this.clearCart} product={this.state.product} cart={this.state.cart} />
+        </div>
+      </div>
+    );
 
     return (
       <div className="catch-of-the-day">
       <div className="menu">
       <header className="top">
         <h2><span>Suggestions</span></h2>
+        <ul>
           {productRows}
+        </ul>
       </header>
       </div>
       <div className="menu">

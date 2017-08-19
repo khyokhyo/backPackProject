@@ -323,8 +323,8 @@ header.top h3:after {
   display: flex;
   height: 90vh;
   max-width: 1500px;
-  margin: 0 auto;
-  margin-top: 5vh;
+  margin-top: 7px;
+  margin-left: 0px;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
 }
@@ -348,7 +348,8 @@ header.top h3:after {
       flex-basis: 50%;
   -webkit-transform: translateX(50%) rotateY(6deg) translateX(-50%);
           transform: translateX(50%) rotateY(6deg) translateX(-50%);
-  min-width: 300px;
+  min-width: 500px;
+  max-width: 1000px;
 }
 .catch-of-the-day > *:nth-child(2) {
   -ms-flex-negative: 1;
@@ -357,7 +358,11 @@ header.top h3:after {
       flex-basis: 50%;
   -webkit-transform: translateX(50%) rotateY(6deg) translateX(-50%);
           transform: translateX(50%) rotateY(6deg) translateX(-50%);
-  min-width: 15s0px;
+  
+  margin-top: 20px;
+  min-width: 200px;
+  max-width: 305px;
+  max-height: 555px;
 }
 .catch-of-the-day > *:last-child {
   -ms-flex-negative: 1;
@@ -542,15 +547,13 @@ input[type=submit] {
 }
 button[disabled],
 input[type=submit][disabled] {
-  color: #d12028;
+  color: #000;
   background: #fff;
-  border-color: #d12028;
-  -webkit-transform: rotate(-10deg) scale(2) translateX(50%) translateY(-50%);
-          transform: rotate(-10deg) scale(2) translateX(50%) translateY(-50%);
+  border-color: #000;
 }
 button[disabled]:hover,
 input[type=submit][disabled]:hover {
-  color: #d12028;
+  color: #000;
   cursor: not-allowed;
 }
 button[disabled]:after,
@@ -631,8 +634,9 @@ input[type=submit].twitter:after {
 }
 .product-selector {
   background: #fff;
-  max-width: 500px;
-  margin: 50px auto;
+  max-width: 1500px;
+  margin-left: 0px;
+  margin-right: 0px;
   padding: 2rem;
   border: 2px solid #000;
 }
@@ -642,6 +646,5 @@ input[type=submit].twitter:after {
 }
 .product-selector input[type="text"],
 .product-selector button[type="text"] {
-  text-align: center;
   font-size: 3rem;
 }

@@ -12,7 +12,7 @@ class SearchProduct extends React.Component {
     this.state = {
       value: '',
       showRemoveIcon: false,
-      products: []
+      products: [],
     };
   }
 
@@ -45,11 +45,13 @@ class SearchProduct extends React.Component {
 
     return (
       <div>
+      
         <div className="product-selector">
           <input type="text" placeholder="Please enter a product name" value={this.state.value}
             onChange={this.handleSearchChange} />
         </div>
         <Suggestions products={this.state.products}/>
+
       </div>
     );
   }
