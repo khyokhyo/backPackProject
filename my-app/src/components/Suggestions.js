@@ -8,7 +8,7 @@ class Suggestions extends React.Component {
   constructor() {
     super();
     this.state = {
-      product: [],
+      items: [],
       cart: []
     };
 
@@ -18,19 +18,19 @@ class Suggestions extends React.Component {
 
   addToCart(item, key) {
     const cart = {...this.state.cart};
-    const product = {...this.state.product};
+    const items = {...this.state.items};
     cart[key] = cart[key] + 1 || 1;
-    product[key] = item;
+    items[key] = item;
     this.setState({ cart });
-    this.setState({ product });
+    this.setState({ items });
   }
 
   clearCart(event) {
     const cart = {...this.state.cart};
-    const product = {...this.state.product};
+    const items = {...this.state.items};
 
     this.setState({
-      product: [],
+      items: [],
       cart: []
     });
   }
@@ -47,30 +47,28 @@ class Suggestions extends React.Component {
 
     if (this.props.products == 0) 
     return (
-      <div className="catch-of-the-day">
-        <div className="menu">
-          <header className="top">
-            <h2><span>Suggestions</span></h2>
-          </header>
-            <h3><span>Nothing To Show</span></h3>
+      <div className="product-box-holders">
+        <div>
+          <h2><span>Suggestions</span></h2>
+          <h4><span>Nothing To show</span></h4>
         </div>
-        <div className="menu">
-          <Cart clearCart={this.clearCart} product={this.state.product} cart={this.state.cart} />
+        <div>
+          <Cart clearCart={this.clearCart} items={this.state.items} cart={this.state.cart} />
         </div>
       </div>
     );
 
     return (
-      <div className="catch-of-the-day">
-      <div className="menu">
-        <h2><span>Suggestions</span></h2>
-        <ul>
-          {productRows}
-        </ul>
-      </div>
-      <div className="menu">
-        <Cart clearCart={this.clearCart} product={this.state.product} cart={this.state.cart} />
-      </div>
+      <div className="product-box-holders">
+        <div>
+          <h2><span>Suggestions</span></h2>
+          <ul>
+            {productRows}
+          </ul>
+        </div>
+        <div>
+          <Cart clearCart={this.clearCart} items={this.state.items} cart={this.state.cart} />
+        </div>
       </div>
     );
   }

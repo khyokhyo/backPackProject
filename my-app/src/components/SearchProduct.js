@@ -11,8 +11,7 @@ class SearchProduct extends React.Component {
     super(props);
     this.state = {
       value: '',
-      showRemoveIcon: false,
-      products: [],
+      products: []
     };
   }
 
@@ -25,13 +24,9 @@ class SearchProduct extends React.Component {
 
     if (value === "") {
       this.setState({
-        products: [],
-        showRemoveIcon: false
+        products: []
       });
     } else {
-      this.setState({
-        showRemoveIcon: true
-      });
 
       Client.search(value, products => {
         this.setState({
@@ -46,7 +41,7 @@ class SearchProduct extends React.Component {
     return (
       <div>
 
-        <div className="product-selector">
+        <div className="product-search">
           <input type="text" placeholder="Please enter a product name" value={this.state.value}
             onChange={this.handleSearchChange} />
         </div>
